@@ -1,29 +1,25 @@
-let deathCounter = 0;
-let looseCounter = 0;
+const deathCounter = document.getElementById('dead');
+const looseCounter = document.getElementById('lost');
+
 
 const reset = () => {
-    deathCounter = 0;
-    looseCounter = 0;
-    document.getElementById('dead').textContent = deathCounter;
-    document.getElementById('lost').textContent = looseCounter;
+    deathCounter.textContent = 0;
+    looseCounter.textContent = 0;
 }
 
 getHole = (index) => document.getElementById(`hole${index}`);
 
-
 for (let i = 1; i < 10; i++) {
     getHole(i).onclick = function() {
         if (getHole(i).className.includes('hole_has-mole')) {
-            deathCounter++;
-            document.getElementById('dead').textContent = deathCounter;
-                if (deathCounter > 9) {
+            ++deathCounter.textContent;
+                if (deathCounter.textContent > 9) {
                 reset();
                 alert('Вы победили!');
                 }
         } else {
-            looseCounter++;
-            document.getElementById('lost').textContent = looseCounter;
-                if (looseCounter > 4) {
+            ++looseCounter.textContent;
+                if (looseCounter.textContent > 4) {
                 reset();
                 alert('Вы проиграли!');
                 }
