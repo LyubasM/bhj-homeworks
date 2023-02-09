@@ -22,23 +22,14 @@ let changeItem = (i) => {
 prev.onclick = () => {
     let index = items.findIndex(item => item === document.querySelector('div.slider__item.slider__item_active'));
     let i;
-    if (index === 0) {
-        i = items.length - 1;
-    } else {
-        i = index - 1;
-    }
+    (index === 0) ? i = items.length - 1 : i = index - 1;
     changeItem(i);
 }
 
 next.onclick = () => {
     let index = items.findIndex(item => item === document.querySelector('div.slider__item.slider__item_active'));
     let i;
-    if (index === (items.length - 1)) {
-        i = index - items.length + 1;
-    }
-    else {
-        i = index + 1;
-    }
+    (index === (items.length - 1)) ? i = index - items.length + 1 : i = index + 1;
     changeItem(i);
 }
 
