@@ -1,42 +1,43 @@
 const items = Array.from(document.querySelectorAll('div.slider__item'));
-let activeItem = document.querySelector('div.slider__item.slider__item_active');
 const dots = Array.from(document.querySelectorAll('div.slider__dot'));
 const prev = document.querySelector('div.slider__arrow.slider__arrow_prev');
 const next = document.querySelector('div.slider__arrow.slider__arrow_next');
 
-let changeItem = (side) => {
-    let item = activeItem;
-    let index = items.indexOf(activeItem);
-    let i = 0;
-    if ((index === 0 && side === prev) || (index === (items.length - 1) && side === next)) {
-        i = items.length;
-    }
-    side === prev ? activeItem = items[index - 1 + i] : activeItem = items[index + 1 - i];
-    activeItem.className = 'slider__item.slider__item_active';
-    checkDots();
-    item.className = 'slider__item';
-}
 
-let checkDots = () => {
-    dots.forEach(dot => dot.className = 'slider__dot');
-    dots[items.indexOf(activeItem)].className = 'slider__dot slider__dot_active';
-}
+let activateDot = () => {
+    let activeDot = dots[items.indexOf(document.querySelector('div.slider__item.slider__item_active'))];
+    activeDot.className = 'slider__dot slider__dot_active';
+};
 
-checkDots();
+activateDot();
 
-for (let i = 0; i < dots.length; i++) {
-    dots[i].onclick = () => {
-        let item = activeItem;
-        activeItem = items[i];
-        activeItem.className = 'slider__item.slider__item_active';
-        item.className = 'slider__item';
-        checkDots();
-    }
+let changeItem = (i) => {
+    let index = items.findIndex(item => item === document.querySelector('div.slider__item.slider__item_active'))
+    items[index].className = 'slider__item';
+    dots[index].className = 'slider__dot';
+    items[i].className = 'slider__item slider__item_active';
+    dots[i].className = 'slider__dot slider__dot_active';
 }
 
 prev.onclick = () => {
-    changeItem(prev);
+    let index = items.findIndex(item => item === document.querySelector('div.slider__item.slider__item_active'));
+    let i;
+    if (index === 0) {
+        i = items.length - 1;
+    } else {
+        i = index - 1;
+    }
+    changeItem(i);
 }
+
 next.onclick = () => {
-    changeItem(next);
+    let index = items.findIndex(item => item === document.querySelector('div.slider__item.slider__item_active'));
+    let i = index + 1;
+    if (index === (items.length - 1)) {
+        i = index - items.length + 1;
+    }
+    else {
+        i = index + 1;
+    }
+    changeItem(i);
 }
