@@ -32,7 +32,7 @@ prev.onclick = () => {
 
 next.onclick = () => {
     let index = items.findIndex(item => item === document.querySelector('div.slider__item.slider__item_active'));
-    let i = index + 1;
+    let i;
     if (index === (items.length - 1)) {
         i = index - items.length + 1;
     }
@@ -40,4 +40,10 @@ next.onclick = () => {
         i = index + 1;
     }
     changeItem(i);
+}
+
+for (let i = 0; i < dots.length; i++) {
+    dots[i].onclick = () => {
+        changeItem(i);
+    }
 }
