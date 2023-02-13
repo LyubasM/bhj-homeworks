@@ -12,7 +12,7 @@ let activateDot = () => {
 activateDot();
 
 let changeItem = (i) => {
-    let index = items.findIndex(item => item === document.querySelector('div.slider__item.slider__item_active'))
+    let index = items.findIndex(item => item.className === 'slider__item slider__item_active')
     items[index].className = 'slider__item';
     dots[index].className = 'slider__dot';
     items[i].className = 'slider__item slider__item_active';
@@ -20,14 +20,14 @@ let changeItem = (i) => {
 }
 
 prev.onclick = () => {
-    let index = items.findIndex(item => item === document.querySelector('div.slider__item.slider__item_active'));
+    let index = items.findIndex(item => item.className === 'slider__item slider__item_active');
     let i;
     (index === 0) ? i = items.length - 1 : i = index - 1;
     changeItem(i);
 }
 
 next.onclick = () => {
-    let index = items.findIndex(item => item === document.querySelector('div.slider__item.slider__item_active'));
+    let index = items.findIndex(item => item.className === 'slider__item slider__item_active');
     let i;
     (index === (items.length - 1)) ? i = index - items.length + 1 : i = index + 1;
     changeItem(i);
