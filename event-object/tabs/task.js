@@ -1,0 +1,13 @@
+const nav = document.querySelector('.tab__navigation')
+const navTabs = Array.from(document.querySelectorAll('.tab'));
+const tabContent = Array.from(document.querySelectorAll('.tab__content'));
+
+const changeTab = function(event) {
+    navTabs.forEach(i => i.className = 'tab');
+    tabContent.forEach(i => i.className = 'tab__content');
+    let index = navTabs.indexOf(event.target);
+    navTabs[index].className = 'tab tab_active';
+    tabContent[index].className = 'tab__content tab__content_active';
+}
+
+nav.addEventListener('click', changeTab);
