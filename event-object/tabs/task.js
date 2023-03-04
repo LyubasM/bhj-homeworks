@@ -4,7 +4,7 @@ const tabContent = Array.from(document.querySelectorAll('.tab__content'));
 
 const changeTab = function(event) {
     let index = navTabs.indexOf(event.target);
-    if (index && index >= 0) {
+    if (index > -1) {
         navTabs.forEach(i => i.className = 'tab');
         tabContent.forEach(i => i.className = 'tab__content');
         navTabs[index].className = 'tab tab_active';
