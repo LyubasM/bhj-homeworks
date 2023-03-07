@@ -2,11 +2,10 @@ const taskAdd = document.getElementById('task__input')
 const taskAddBtn = document.getElementById('tasks__add')
 const taskList = document.querySelector('.tasks__list')
 
-let newTask
-
-const createTask = function() {
-    if (taskAdd.value !== '') {
-        newTask = document.createElement('div');
+const createTask = function(e) {
+    e.preventDefault();
+    if (taskAdd.value.trim() !== '') {
+        let newTask = document.createElement('div');
         newTaskTitle = document.createElement('div');
         newTask.className = 'task';
         newTaskTitle.className = 'task__title';
@@ -14,8 +13,8 @@ const createTask = function() {
         newTask.insertAdjacentElement('afterbegin', newTaskTitle);
         newTask.insertAdjacentHTML('beforeend', '<a href="#" class="task__remove">&times;</a>')
         newTaskTitle.innerText = taskAdd.value;
-        taskAdd.value = '';
     }
+    taskAdd.value = '';
 }
 
 const removeTask = function(e) {
@@ -24,12 +23,5 @@ const removeTask = function(e) {
     }
 }
 
-
-
-taskAdd.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        createTask;
-    }
-})
 taskAddBtn.addEventListener('click', createTask);
 taskList.addEventListener('click', removeTask);
