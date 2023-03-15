@@ -12,7 +12,7 @@ const answers = ['Спасибо, я подумаю',
 const scroll = () => {messageBox.scrollTop = messageBox.scrollHeight}
 
 const sendMessage = function(e) {
-    if (e.keyCode === 13 && message.value !== '') {
+    if (e.keyCode === 13 && message.value.trim() !== '') {
         e.preventDefault();
         let time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 
