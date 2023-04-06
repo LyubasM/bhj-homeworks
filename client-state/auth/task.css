@@ -37,6 +37,16 @@
   box-shadow: none;
 }
 
+.btn_signout {
+  margin-top: 20px;
+  background-color: rgb(194, 0, 0);
+}
+
+.btn_signout:hover {
+  background-color: rgb(194, 0, 0);
+}
+
+
 .welcome {
   display: none;
 }

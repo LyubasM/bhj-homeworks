@@ -16,6 +16,6 @@ const getText = function() {
 getText();
 
 btn.addEventListener('click', () => {
-    localStorage.clear();
+    localStorage.setItem('text', '');
     editor.value = '';
 })
